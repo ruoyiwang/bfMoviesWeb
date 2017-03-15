@@ -1,21 +1,38 @@
-<div class="main" ng-controller="NewMovieController">
-    {{newMovieText}}
+<div class="main container" ng-controller="NewMovieController">
+    <form novalidate class="simple-form">
+        <h3>Add new movies</h3>
+        <div class="input-group">
+            <!--title-->
+            <input type="text"
+                   class="form-control filter-input"
+                   placeholder="Title..."
+                   aria-describedby="basic-addon1"
+                   ng-model="search.Title"
+                   uib-typeahead="movie as movie.Title for movie in getMoviesTypeAhead($viewValue)"
+                   typeahead-loading="loading"
+                   typeahead-no-results="noResults"
+                   typeahead-on-select="onSelect(onSelect($item, $model, $label, $event))">
+            <input type="text" class="form-control filter-input" placeholder="Actors..." aria-describedby="basic-addon1" ng-model="movie.Actors">
+            <input type="text" class="form-control filter-input" placeholder="Genre..." aria-describedby="basic-addon1" ng-model="movie.Genre">
+        </div>
+
+
+        <!--<label>Movie Name:-->
+            <!--<input type="text" ng-model="movie.Title"-->
+                   <!--placeholder="type something"-->
+                   <!--uib-typeahead="movie as movie.Title for movie in getMoviesTypeAhead($viewValue)"-->
+                   <!--typeahead-loading="loading"-->
+                   <!--typeahead-no-results="noResults"-->
+
+                   <!--typeahead-on-select="onSelect(onSelect($item, $model, $label, $event))"-->
+            <!--&gt;-->
+        <!--</label><br />-->
+
+        <!--<label>Actors: <input type="text" ng-model="movie.Actors" /></label><br />-->
+        <!--<label>Genre: <input type="text" ng-model="movie.Genre" /></label><br />-->
+
+        <button class="btn btn-default" ng-click="update(movie)" value="Save">Add!</button>
+    </form>
+
+
 </div>
-
-<form novalidate class="simple-form">
-    <label>Movie Name:
-        <input type="text" ng-model="movie.Title"
-               placeholder="type something"
-               uib-typeahead="movie as movie.Title for movie in getMoviesTypeAhead($viewValue)"
-               typeahead-loading="loading"
-               typeahead-no-results="noResults"
-
-               typeahead-on-select="onSelect(onSelect($item, $model, $label, $event))"
-        >
-    </label><br />
-
-    <label>Actors: <input type="text" ng-model="movie.Actors" /></label><br />
-    <label>Genre: <input type="text" ng-model="movie.Genre" /></label><br />
-
-    <input type="submit" ng-click="update(movie)" value="Save" />
-</form>

@@ -2,6 +2,7 @@ html, body {
   font-family: 'Roboto', sans-serif;
   width:100%;
 }
+
 body {
     padding-top: 55px;
 }
@@ -25,6 +26,11 @@ img.poster {
     flex-direction: column;
 }
 
-.input-group input{
+.input-group input,button{
     margin-top: 0.5em;
+}
+
+.input-group .dropdown-menu {
+    width: 100%;
+    overflow: auto;;
 }
