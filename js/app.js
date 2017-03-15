@@ -18,3 +18,33 @@ app.config(function ($routeProvider) {
             redirectTo: '/'
         });
 });
+
+app.controller("NavController", ['$scope', 'movieService', '$rootScope', function($scope, movieService, $rootScope) {
+    if ($rootScope.uid) {
+        $scope.loggedIn = true;
+    }
+    else {
+        $scope.loggedIn = false;
+    }
+
+    $rootScope.$on('event:social-sign-in-success', function(event, userDetails){
+        console.log("logged in");
+        $scope.loggedIn = true;
+
+        console.log(userDetails);
+        $scope.name = userDetails.name;
+
+        var uid = userDetails.uid;
+        $rootScope.uid = uid;
+
+        movieService.getMoviesForUser(uid,
+            function(data) {
+                var result = data.data;
+                console.log(result);
+                $scope.movies = result;
+
+            }, function(err) {
+                console.log(err);
+            });
+    });
+}]);

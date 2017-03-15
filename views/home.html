@@ -1,8 +1,12 @@
 <div class="main" ng-controller="MainController">
-    <button fb-login type="button">facebook Login</button>
+    <label> Search by Title: <input type="text" ng-model="search.Title"></label>
+    <label> Search by Actors: <input type="text" ng-model="search.Actors"></label>
+    <label> Search by Genre: <input type="text" ng-model="search.Genre"></label>
+
+    <br />
 
     <div class="container">
-        <div class="card" ng-repeat="m in movies">
+        <div class="card" ng-repeat="m in movies | filter:search">
             <movie info="m"></movie>
         </div>
     </div>

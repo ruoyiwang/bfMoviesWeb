@@ -1,30 +1,34 @@
-app.controller('MainController', ['$scope', 'movieService', '$rootScope', 'fbService', function($scope, movieService, $rootScope, fbService) {
+app.controller('MainController', ['$scope', 'movieService', '$rootScope', '$filter', function($scope, movieService, $rootScope, $filter) {
 
-    // gets the default movies
-    movieService.getMovies(function(data) {
-        var result = data.data;
-        console.log(result);
-        $scope.movies = result;
+    function showAllMovies() {
+        movieService.getMovies(function (data) {
+            var result = data.data;
+            console.log(result);
+            $scope.movies = result;
 
-    }, function(err) {
-        console.log(err);
+        }, function (err) {
+            console.log(err);
+        });
+    }
+
+    // start with all movies shown
+    showAllMovies();
+
+    $rootScope.$watch("uid", function(newVal, oldval) {
+        // gets the default movies
+        if (newVal) {
+            movieService.getMoviesForUser($rootScope.uid,
+                function (data) {
+                    var result = data.data;
+                    console.log(result);
+                    $scope.movies = result;
+
+                }, function (err) {
+                    console.log(err);
+                });
+        }
+        else {
+            showAllMovies();
+        }
     });
-
-    $rootScope.$on('event:social-sign-in-success', function(event, userDetails){
-        console.log("logged in");
-
-        console.log(userDetails);
-
-        var uid = userDetails.uid;
-
-        movieService.getMoviesForUser(uid,
-            function(data) {
-                var result = data.data;
-                console.log(result);
-                $scope.movies = result;
-
-            }, function(err) {
-                console.log(err);
-            });
-    })
 }]);

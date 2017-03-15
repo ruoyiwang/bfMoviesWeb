@@ -2,7 +2,24 @@ app.controller('NewMovieController', ['$scope', 'movieService', '$rootScope', '$
     $scope.newMovieText = "input a new movie please";
 
     $scope.update = function(movie) {
-        // alert(JSON.stringify(movie));
+        console.log(movie);
+        console.log($rootScope.uid);
+
+        var data = {
+            "imdbID":movie.imdbID,
+            "uid":$rootScope.uid
+        };
+
+        // empty config is good enough
+        var config = { };
+
+        $http.post('https://6lk6s51xv6.execute-api.us-east-1.amazonaws.com/prod/AddUserToMovie', data, config)
+            .then(function(resp) {
+
+            }, function(err){
+
+            });
+
     };
 
     $scope.getMoviesTypeAhead = function(val) {
