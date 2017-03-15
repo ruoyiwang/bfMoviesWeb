@@ -1,5 +1,6 @@
 app.controller('NewMovieController', ['$scope', 'movieService', '$rootScope', '$http', function($scope, movieService, $rootScope, $http) {
     $scope.newMovieText = "input a new movie please";
+    $scope.success = false;
 
     $scope.update = function(movie) {
         console.log(movie);
@@ -15,7 +16,9 @@ app.controller('NewMovieController', ['$scope', 'movieService', '$rootScope', '$
 
         $http.post('https://6lk6s51xv6.execute-api.us-east-1.amazonaws.com/prod/AddUserToMovie', data, config)
             .then(function(resp) {
-
+                $scope.success = true;
+                $scope.movie = {};
+                $scope.search = {};
             }, function(err){
 
             });
@@ -23,6 +26,7 @@ app.controller('NewMovieController', ['$scope', 'movieService', '$rootScope', '$
     };
 
     $scope.getMoviesTypeAhead = function(val) {
+        $scope.success = false;
         console.log(val);
         return $http.get('https://6lk6s51xv6.execute-api.us-east-1.amazonaws.com/prod/SearchMoviesByTitle', {
             params: {
@@ -43,5 +47,5 @@ app.controller('NewMovieController', ['$scope', 'movieService', '$rootScope', '$
                 $scope.movie = response.data;
             });
         }
-    }
+    };
 }]);

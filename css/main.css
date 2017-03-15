@@ -27,11 +27,12 @@ img.poster {
     align-items: center;
 }
 
-.input-group input,button,img {
+.input-group * {
     margin-top: 0.5em;
 }
 
-.input-group .dropdown-menu {
+.input-group ul.dropdown-menu {
+    margin-top: 0;
     width: 100%;
     overflow: auto;
 }

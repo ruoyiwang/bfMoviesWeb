@@ -21,9 +21,12 @@
 
             <button class="btn btn-default" ng-click="update(movie)" value="Save">Add!</button>
 
+            <div class="alert alert-success" ng-show="success">
+                <strong>Success!</strong> You have added {{movie.Title}} into your library.
+            </div>
+
             <img class="preview-poster" ng-src="{{ movie.Poster }}">
         </div>
-
     </form>
 
 
