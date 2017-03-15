@@ -37,7 +37,7 @@ app.service('movieService', ['$http', function($http) {
     };
 
     this.getMovieById = function(imdbID, callback, error) {
-        $http.get('https://6lk6s51xv6.execute-api.us-east-1.amazonaws.com/prod/GetMovieById', {
+        return $http.get('https://6lk6s51xv6.execute-api.us-east-1.amazonaws.com/prod/GetMovieById', {
             params: {
                 id: imdbID
             }

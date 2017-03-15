@@ -23,7 +23,7 @@ app.controller('NewMovieController', ['$scope', 'movieService', '$rootScope', fu
 
     $scope.onSelect = function($item, $model, $label, $event) {
         if ($item) {
-            movieService.getMovieById($item.imdbId, function(response){
+            movieService.getMovieById($item.imdbID, function(response){
                 $scope.movie = response.data;
             });
         }
