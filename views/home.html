@@ -1,11 +1,14 @@
-<div class="main" ng-controller="MainController">
-    <label> Search by Title: <input type="text" ng-model="search.Title"></label>
-    <label> Search by Actors: <input type="text" ng-model="search.Actors"></label>
-    <label> Search by Genre: <input type="text" ng-model="search.Genre"></label>
+<div class="main container" ng-controller="MainController">
+    <div class="col-sm-3 search-wrapper">
+        <h3>Filterrrrrrrr</h3>
+        <div class="input-group">
+            <input type="text" class="form-control filter-input" placeholder="Title..." aria-describedby="basic-addon1" ng-model="search.Title">
+            <input type="text" class="form-control filter-input" placeholder="Actors..." aria-describedby="basic-addon1" ng-model="search.Actors">
+            <input type="text" class="form-control filter-input" placeholder="Genre..." aria-describedby="basic-addon1" ng-model="search.Genre">
+        </div>
+    </div>
 
-    <br />
-
-    <div class="container">
+    <div class="col-sm-9 movies-container">
         <div class="card" ng-repeat="m in movies | filter:search">
             <movie info="m"></movie>
         </div>

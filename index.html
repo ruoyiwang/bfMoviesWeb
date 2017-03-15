@@ -12,16 +12,15 @@
 <body ng-app="bfMoviesWeb">
 <nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavController">
     <div class="container">
-
-        <button fb-login type="button" class="btn btn-default navbar-btn" ng-show="!loggedIn">facebook Login</button>
-        <p class="navbar-text" ng-show="loggedIn">Signed in as {{name}}</p>
-
         <a class="navbar-text" href="#index">
             Home
         </a>
         <a class="navbar-text" href="#new_movie">
             New Movie
         </a>
+
+        <button fb-login type="button" class="btn btn-default navbar-btn navbar-right" ng-show="!loggedIn">facebook Login</button>
+        <p class="navbar-text navbar-right" ng-show="loggedIn">Signed in as {{name}}</p>
     </div>
 </nav>
 

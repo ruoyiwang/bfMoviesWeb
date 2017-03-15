@@ -3,11 +3,28 @@ html, body {
   width:100%;
 }
 body {
-    padding-top: 50px;
+    padding-top: 55px;
 }
 
-.container {
+.movies-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.card {
+    width: 25%;
+}
+
+img.poster {
+    max-width: 90%;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group input{
+    margin-top: 0.5em;
 }
