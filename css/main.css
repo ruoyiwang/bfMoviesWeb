@@ -9,12 +9,10 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 .card {
-  width: 25%;
-}
-img.poster {
-  max-width: 90%;
+  width: 30%;
 }
 .input-group {
   display: flex;
