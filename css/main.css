@@ -24,13 +24,14 @@ img.poster {
 .input-group {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-.input-group input,button{
+.input-group input,button,img {
     margin-top: 0.5em;
 }
 
 .input-group .dropdown-menu {
     width: 100%;
-    overflow: auto;;
+    overflow: auto;
 }

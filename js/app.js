@@ -19,7 +19,7 @@ app.config(function ($routeProvider) {
         });
 });
 
-app.controller("NavController", ['$scope', 'movieService', '$rootScope', function($scope, movieService, $rootScope) {
+app.controller("NavController", ['$scope', 'movieService', '$rootScope', '$location', function($scope, movieService, $rootScope, $location) {
     if ($rootScope.uid) {
         $scope.loggedIn = true;
     }
@@ -46,5 +46,18 @@ app.controller("NavController", ['$scope', 'movieService', '$rootScope', functio
             }, function(err) {
                 console.log(err);
             });
+    });
+
+    // register listener to watch route changes
+    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+        if ( $rootScope.uid == null ) {
+            // no logged user, we should be going to #login
+            if ( next.templateUrl == "/" ) {
+                // already going to #login, no redirect needed
+            } else {
+                // not going to #login, we should redirect now
+                $location.path( "/" );
+            }
+        }
     });
 }]);
