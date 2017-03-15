@@ -31,7 +31,7 @@ app.service('movieService', ['$http', function($http) {
     this.searchMoviesByTitle = function(title, callback, error) {
         return $http.get('https://6lk6s51xv6.execute-api.us-east-1.amazonaws.com/prod/SearchMoviesByTitle', {
             params: {
-                title: val
+                title: title
             }
         }).then(callback, error);
     };
