@@ -37,19 +37,12 @@ app.controller("NavController", ['$scope', 'movieService', '$rootScope', '$locat
         var uid = userDetails.uid;
         $rootScope.uid = uid;
 
-        movieService.getMoviesForUser(uid,
-            function(data) {
-                var result = data.data;
-                console.log(result);
-                $scope.movies = result;
-
-            }, function(err) {
-                console.log(err);
-            });
     });
 
     // register listener to watch route changes
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+        
+        // if user not logged in, need to control access
         if ( $rootScope.uid == null ) {
             // no logged user, we should be going to #login
             if ( next.templateUrl == "/" ) {

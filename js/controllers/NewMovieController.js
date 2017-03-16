@@ -1,5 +1,5 @@
 app.controller('NewMovieController', ['$scope', 'movieService', '$rootScope', function($scope, movieService, $rootScope) {
-    $scope.newMovieText = "input a new movie please";
+
     $scope.success = false;
 
     $scope.update = function(movie) {
